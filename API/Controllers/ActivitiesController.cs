@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Application;
 using Domain;
 using MediatR;
+=======
+using Domain;
+>>>>>>> 6c8e6f1a503ae4da3c0f69d7644afb934f754803
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -12,6 +16,7 @@ using Persistence;
 
 namespace API.Controllers
 {
+<<<<<<< HEAD
     public class ActivitiesController : BaseController
     {
         private readonly ILogger<ActivitiesController> _logger;
@@ -20,11 +25,31 @@ namespace API.Controllers
         public async Task<ActionResult<List<Activity>>> GetActivities()
         {
             return await Mediator.Send(new List.Query());
+=======
+    [ApiController]
+    [Route("[controller]")]
+    public class ActivitiesController : ControllerBase
+    {
+        private readonly DataContext _context;
+        private readonly ILogger<ActivitiesController> _logger;
+
+        public ActivitiesController(DataContext context, ILogger<ActivitiesController> logger)
+        {
+            _context = context;
+            _logger = logger;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Activity>>> GetActivities()
+        {
+            return await _context.Activities.ToListAsync();
+>>>>>>> 6c8e6f1a503ae4da3c0f69d7644afb934f754803
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity(Guid id)
         {
+<<<<<<< HEAD
             return await Mediator.Send(new Details.Query { Id = id });
         }
 
@@ -45,6 +70,9 @@ namespace API.Controllers
         public async Task<IActionResult> DeleteActivitiy(Guid id)
         {
             return Ok(await Mediator.Send(new Delete.Command{ Id = id}));
+=======
+            return await _context.Activities.FindAsync(id);
+>>>>>>> 6c8e6f1a503ae4da3c0f69d7644afb934f754803
         }
     }
 }

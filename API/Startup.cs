@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< HEAD
 using Application;
 using Application.Core;
 using MediatR;
+=======
+>>>>>>> 6c8e6f1a503ae4da3c0f69d7644afb934f754803
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -40,8 +43,11 @@ namespace API
             {
                 opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
+<<<<<<< HEAD
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+=======
+>>>>>>> 6c8e6f1a503ae4da3c0f69d7644afb934f754803
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
